@@ -1,0 +1,3 @@
+C:\Embebidos\Clase\T9_LCD_Nokia\drivers/fsl_clock.h:889:20:CLOCK_SetSimSafeDivs	4	static
+C:\Embebidos\Clase\T9_LCD_Nokia\drivers/fsl_clock.h:1229:20:CLOCK_SetXtal0Freq	16	static
+../source/CLK_Tree.c:16:6:CLK_config	24	static
