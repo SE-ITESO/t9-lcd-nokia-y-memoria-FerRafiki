@@ -1,4 +1,4 @@
 C:\Embebidos\Clase\T9_LCD_Nokia\drivers/fsl_clock.h:668:20:CLOCK_EnableClock	24	static
 C:\Embebidos\Clase\T9_LCD_Nokia\drivers/fsl_clock.h:889:20:CLOCK_SetSimSafeDivs	4	static
 C:\Embebidos\Clase\T9_LCD_Nokia\drivers/fsl_port.h:374:20:PORT_SetPinMux	24	static
-../source/SPI.c:9:6:SPI_config	88	static
+../source/SPI.c:10:6:SPI_config	88	static

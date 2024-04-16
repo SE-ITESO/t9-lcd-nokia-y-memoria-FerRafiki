@@ -11,6 +11,7 @@ C_SRCS += \
 ../drivers/fsl_dspi.c \
 ../drivers/fsl_gpio.c \
 ../drivers/fsl_i2c.c \
+../drivers/fsl_pit.c \
 ../drivers/fsl_smc.c \
 ../drivers/fsl_uart.c 
 
@@ -22,6 +23,7 @@ C_DEPS += \
 ./drivers/fsl_dspi.d \
 ./drivers/fsl_gpio.d \
 ./drivers/fsl_i2c.d \
+./drivers/fsl_pit.d \
 ./drivers/fsl_smc.d \
 ./drivers/fsl_uart.d 
 
@@ -33,6 +35,7 @@ OBJS += \
 ./drivers/fsl_dspi.o \
 ./drivers/fsl_gpio.o \
 ./drivers/fsl_i2c.o \
+./drivers/fsl_pit.o \
 ./drivers/fsl_smc.o \
 ./drivers/fsl_uart.o 
 
@@ -49,7 +52,7 @@ drivers/%.o: ../drivers/%.c drivers/subdir.mk
 clean: clean-drivers
 
 clean-drivers:
-	-$(RM) ./drivers/fsl_adc16.d ./drivers/fsl_adc16.o ./drivers/fsl_clock.d ./drivers/fsl_clock.o ./drivers/fsl_common.d ./drivers/fsl_common.o ./drivers/fsl_common_arm.d ./drivers/fsl_common_arm.o ./drivers/fsl_dspi.d ./drivers/fsl_dspi.o ./drivers/fsl_gpio.d ./drivers/fsl_gpio.o ./drivers/fsl_i2c.d ./drivers/fsl_i2c.o ./drivers/fsl_smc.d ./drivers/fsl_smc.o ./drivers/fsl_uart.d ./drivers/fsl_uart.o
+	-$(RM) ./drivers/fsl_adc16.d ./drivers/fsl_adc16.o ./drivers/fsl_clock.d ./drivers/fsl_clock.o ./drivers/fsl_common.d ./drivers/fsl_common.o ./drivers/fsl_common_arm.d ./drivers/fsl_common_arm.o ./drivers/fsl_dspi.d ./drivers/fsl_dspi.o ./drivers/fsl_gpio.d ./drivers/fsl_gpio.o ./drivers/fsl_i2c.d ./drivers/fsl_i2c.o ./drivers/fsl_pit.d ./drivers/fsl_pit.o ./drivers/fsl_smc.d ./drivers/fsl_smc.o ./drivers/fsl_uart.d ./drivers/fsl_uart.o
 
 .PHONY: clean-drivers
 

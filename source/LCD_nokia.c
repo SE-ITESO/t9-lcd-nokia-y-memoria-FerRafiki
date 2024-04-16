@@ -1,14 +1,10 @@
-
-
+/**Included files*/
 #include "fsl_gpio.h"
 #include "fsl_port.h"
 #include "SPI.h"
 #include "LCD_nokia.h"
 #include "stdint.h"
 #include "fsl_dspi.h"
-
-
-
 
 static const uint8_t ASCII[][5] =
 {

@@ -4,30 +4,27 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../source/CLK_Tree.c \
-../source/Delay.c \
 ../source/LCD_nokia.c \
 ../source/LCD_nokia_images.c \
+../source/PIT.c \
 ../source/SPI.c \
 ../source/SPI_memory.c \
 ../source/main.c \
 ../source/semihost_hardfault.c 
 
 C_DEPS += \
-./source/CLK_Tree.d \
-./source/Delay.d \
 ./source/LCD_nokia.d \
 ./source/LCD_nokia_images.d \
+./source/PIT.d \
 ./source/SPI.d \
 ./source/SPI_memory.d \
 ./source/main.d \
 ./source/semihost_hardfault.d 
 
 OBJS += \
-./source/CLK_Tree.o \
-./source/Delay.o \
 ./source/LCD_nokia.o \
 ./source/LCD_nokia_images.o \
+./source/PIT.o \
 ./source/SPI.o \
 ./source/SPI_memory.o \
 ./source/main.o \
@@ -46,7 +43,7 @@ source/%.o: ../source/%.c source/subdir.mk
 clean: clean-source
 
 clean-source:
-	-$(RM) ./source/CLK_Tree.d ./source/CLK_Tree.o ./source/Delay.d ./source/Delay.o ./source/LCD_nokia.d ./source/LCD_nokia.o ./source/LCD_nokia_images.d ./source/LCD_nokia_images.o ./source/SPI.d ./source/SPI.o ./source/SPI_memory.d ./source/SPI_memory.o ./source/main.d ./source/main.o ./source/semihost_hardfault.d ./source/semihost_hardfault.o
+	-$(RM) ./source/LCD_nokia.d ./source/LCD_nokia.o ./source/LCD_nokia_images.d ./source/LCD_nokia_images.o ./source/PIT.d ./source/PIT.o ./source/SPI.d ./source/SPI.o ./source/SPI_memory.d ./source/SPI_memory.o ./source/main.d ./source/main.o ./source/semihost_hardfault.d ./source/semihost_hardfault.o
 
 .PHONY: clean-source
 

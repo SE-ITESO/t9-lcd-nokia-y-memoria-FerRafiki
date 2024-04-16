@@ -5,11 +5,11 @@
  * Generated linker script file for MK64FN1M0xxx12
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.9.0 [Build 2144] [2024-01-05] on 16 abr. 2024 14:32:04
+ * MCUXpresso IDE v11.9.0 [Build 2144] [2024-01-05] on 16 abr. 2024 17:31:30
  */
 
-INCLUDE "NOKIA_Debug_library.ld"
-INCLUDE "NOKIA_Debug_memory.ld"
+INCLUDE "T9_LCD_Nokia_Debug_library.ld"
+INCLUDE "T9_LCD_Nokia_Debug_memory.ld"
 
 ENTRY(ResetISR)
 

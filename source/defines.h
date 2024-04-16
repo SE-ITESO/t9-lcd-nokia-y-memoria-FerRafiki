@@ -14,7 +14,7 @@
 #define ZERO 0U
 #define ONE 1U
 #define TWO 2U
-#define CYCLES_FIRST_FREQ 100U
+#define CYCLES 7000U
 #define CYCLES_SECOND_FREQ 50U
 #define CYCLES_THIRD_FREQ 1U
 

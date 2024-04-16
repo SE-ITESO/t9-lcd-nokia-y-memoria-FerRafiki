@@ -1,4 +1,5 @@
 
+/**Included files*/
 #include "SPI.h"
 #include "fsl_dspi.h"
 #include "fsl_port.h"
@@ -33,18 +34,18 @@ void SPI_config(void)
 
 
 	 /* Master config (LCD)*/
-	masterConfig_LCD.whichCtar                                = kDSPI_Ctar0;   //Configuracion de transmision. Tener 2 ctars para la pantalla y la memoria
-	masterConfig_LCD.ctarConfig.baudRate                      = TRANSFER_BAUDRATE;
+	masterConfig_LCD.whichCtar                                = kDSPI_Ctar0;   //Ctar exclusively for the LCD
+	masterConfig_LCD.ctarConfig.baudRate                      = LCD_CLK;
 	masterConfig_LCD.ctarConfig.bitsPerFrame                  = 8U;
-	masterConfig_LCD.ctarConfig.cpol                          = kDSPI_ClockPolarityActiveHigh;
+	masterConfig_LCD.ctarConfig.cpol                          = kDSPI_ClockPolarityActiveHigh; //Mode zero for SPI configuration
 	masterConfig_LCD.ctarConfig.cpha                          = kDSPI_ClockPhaseFirstEdge;
 	masterConfig_LCD.ctarConfig.direction                     = kDSPI_MsbFirst;
-	masterConfig_LCD.ctarConfig.pcsToSckDelayInNanoSec        = 1000000000U / TRANSFER_BAUDRATE;   //Tiempos con los que jugar en la tarea
-	masterConfig_LCD.ctarConfig.lastSckToPcsDelayInNanoSec    = 1000000000U / TRANSFER_BAUDRATE;
-	masterConfig_LCD.ctarConfig.betweenTransferDelayInNanoSec = 1000000000U / TRANSFER_BAUDRATE;
+	masterConfig_LCD.ctarConfig.pcsToSckDelayInNanoSec        = 1000000000U / LCD_CLK;
+	masterConfig_LCD.ctarConfig.lastSckToPcsDelayInNanoSec    = 1000000000U / LCD_CLK;
+	masterConfig_LCD.ctarConfig.betweenTransferDelayInNanoSec = 1000000000U / LCD_CLK;
 
-	masterConfig_LCD.whichPcs           = kDSPI_Pcs0;
-	masterConfig_LCD.pcsActiveHighOrLow = kDSPI_PcsActiveLow;   //
+	masterConfig_LCD.whichPcs           = kDSPI_Pcs0;			//Chip Select for the LCD
+	masterConfig_LCD.pcsActiveHighOrLow = kDSPI_PcsActiveLow;
 
 	masterConfig_LCD.enableContinuousSCK        = false;
 	masterConfig_LCD.enableRxFifoOverWrite      = false;
@@ -55,18 +56,18 @@ void SPI_config(void)
 	DSPI_MasterInit(SPI0, &masterConfig_LCD, srcClock_Hz_LCD);
 
  /* Master config (Memory)*/
-	masterConfig_MEM.whichCtar                                = kDSPI_Ctar1;   //Configuracion de transmision. Tener 2 ctars para la pantalla y la memoria
-	masterConfig_MEM.ctarConfig.baudRate                      = 2000000U;
+	masterConfig_MEM.whichCtar                                = kDSPI_Ctar1;   //Ctar exclusively for the memory
+	masterConfig_MEM.ctarConfig.baudRate                      = Mem_CLK;
 	masterConfig_MEM.ctarConfig.bitsPerFrame                  = 8U;
-	masterConfig_MEM.ctarConfig.cpol                          = kDSPI_ClockPolarityActiveLow;
+	masterConfig_MEM.ctarConfig.cpol                          = kDSPI_ClockPolarityActiveLow; //Mode three for SPI configuration
 	masterConfig_MEM.ctarConfig.cpha                          = kDSPI_ClockPolarityActiveLow;
 	masterConfig_MEM.ctarConfig.direction                     = kDSPI_MsbFirst;
-	masterConfig_MEM.ctarConfig.pcsToSckDelayInNanoSec        = 1000000000U / TRANSFER_BAUDRATE;   //Tiempos con los que jugar en la tarea
-	masterConfig_MEM.ctarConfig.lastSckToPcsDelayInNanoSec    = 1000000000U / TRANSFER_BAUDRATE;
-	masterConfig_MEM.ctarConfig.betweenTransferDelayInNanoSec = 1000000000U / TRANSFER_BAUDRATE;
+	masterConfig_MEM.ctarConfig.pcsToSckDelayInNanoSec        = 1000000000U / Mem_CLK;   //Tiempos con los que jugar en la tarea
+	masterConfig_MEM.ctarConfig.lastSckToPcsDelayInNanoSec    = 1000000000U / Mem_CLK;
+	masterConfig_MEM.ctarConfig.betweenTransferDelayInNanoSec = 1000000000U / Mem_CLK;
 
-	masterConfig_MEM.whichPcs           = kDSPI_Pcs1;
-	masterConfig_MEM.pcsActiveHighOrLow = kDSPI_PcsActiveLow;   //
+	masterConfig_MEM.whichPcs           = kDSPI_Pcs1;			//Chip Select for the Memory
+	masterConfig_MEM.pcsActiveHighOrLow = kDSPI_PcsActiveLow;
 
 	masterConfig_MEM.enableContinuousSCK        = false;
 	masterConfig_MEM.enableRxFifoOverWrite      = false;

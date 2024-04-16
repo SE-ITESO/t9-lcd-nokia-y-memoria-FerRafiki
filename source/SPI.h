@@ -18,7 +18,9 @@
 #define PIN17_IDX                       17u   /*!< Pin number for pin 17 in a port */
 
 #define TRANSFER_SIZE     64U     /*! Transfer dataSize */
-#define TRANSFER_BAUDRATE 1000000U /*! Transfer baudrate - 500k */
+#define LCD_CLK 1000000U
+#define Mem_CLK 2000000U
+
 
 void SPI_config(void);
 

@@ -1,1 +1,1 @@
-../source/SPI_memory.c:17:9:memory_read_byte	48	static
+../source/SPI_memory.c:25:9:memory_read_byte	48	static

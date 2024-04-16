@@ -20,21 +20,20 @@
 #include "LCD_nokia_images.h"
 #include "stdint.h"
 #include "SPI.h"
-#include "Delay.h"
-#include "CLK_Tree.h"
+
+
 #include "SPI_memory.h"
-
-
-/*! This array hold the initial picture that is shown in the LCD. Note that extern should be avoided*/
-//extern const uint8_t ITESO[504];
+#include "PIT.h"
 
 int main(void)
 {
 	SPI_config();		/**SPI essential configuration for both the LCD and the memory*/
 	LCD_nokia_init(); 	/*! Initialization function for the LCD */
 
+	PIT_init();
+
 	/**Control counters and base addresses:*/
-	uint8_t image_count;
+	uint8_t image_count = ZERO;
 	uint16_t byte_elemnt = ZERO;
 	uint8_t image[IMG_LENGTH] = {ZERO};
 	uint32_t mem_images_address = BASE_ADDRESS_MEM;
@@ -43,13 +42,12 @@ int main(void)
 	/**Infinite loop (where we constantly display the 6 images)*/
 	for(;;)
 	{
-		/**Image shifter iterator*/
-		for(image_count = ZERO; image_count < TOTAL_IMAGES; image_count++)
+		if(TRUE ==  PIT0_get_irq_status())
 		{
-			delay(65000);
+			image_count++;
 			LCD_nokia_clear();/**! It clears the information printed in the LCD*/
 
-			if(TOTAL_IMAGES != (image_count + ONE))
+			if(TOTAL_IMAGES != image_count )
 			{
 				while(IMG_LENGTH > byte_elemnt)
 				{
@@ -70,8 +68,12 @@ int main(void)
 			else
 			{
 				LCD_nokia_bitmap(ITESO);
+				image_count = ZERO;
 			}
+
+			PIT0_clear_irq_status();
 		}
+
 	}
 	return 0;
 }
